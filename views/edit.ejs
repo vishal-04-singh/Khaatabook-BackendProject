@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Hisaab</title>
+  <style>
+    nav {
+        background-color: #333;
+        padding: 10px ;
+        display: flex;
+        justify-content: space-evenly;
+        
+        
+    }
+    nav .left {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+    }
+    nav .right {
+        color: white;
+        font-size: 18px;
+        display: flex;
+        flex-direction: row;
+        
+    }
+    nav .right li {
+        list-style: none;
+        margin: 0 15px;
+        cursor: pointer;
+    }
+    body {
+      font-family: sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .edit-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 600px;
+    }
+
+    .edit-container p {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .edit-container p .date {
+      color: #1e88e5;
+      text-decoration: none;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #eaeaea;
+      font-size: 16px;
+      resize: vertical;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #1e88e5;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #1565c0;
+    }
+  </style>
+</head>
+<body>
+    <nav>
+    <div class="left">Khaatabook</div>
+    <div class="right">
+        <li>Home</li>
+        <li>Create new Hisaab</li>
+    </div>
+    
+   </nav>
+
+<div class="edit-container">
+  <p>you're editing hisaab of <a href="#" class="date">12-08-2024</a> date</p>
+  <textarea id="editDetails" placeholder="write your hisaab."></textarea>
+  <button onclick="updateHisaab()">Update Hisaab</button>
+</div>
+
+<script>
+  function updateHisaab() {
+    const updatedText = document.getElementById("editDetails").value;
+    if (!updatedText.trim()) {
+      alert("Please write your hisaab before updating.");
+      return;
+    }
+    alert("Hisaab updated:\n\n" + updatedText);
+  }
+</script>
+
+</body>
+</html>
