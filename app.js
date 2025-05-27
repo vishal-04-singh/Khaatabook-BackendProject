@@ -34,8 +34,8 @@ app.get('/delete/:filename', (req, res) => {
     fs.unlink(`./hisaab/${req.params.filename}`, (err) => {
         if (err) return res.status(500).send(err);
         res.redirect('/');
-    
-});
+
+    });
 
 
 });
