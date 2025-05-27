@@ -4,137 +4,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Khaatabook - All Hisaab</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #dfe9f3 0%, #ffffff 100%);
+            color: #222;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 12px 0 rgba(44, 62, 80, 0.07);
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .nav-logo {
+            color: #1769aa;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #1769aa;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 5px;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: #e3f0fb;
+            color: #0d3c61;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px rgba(52, 103, 168, 0.08);
+            padding: 32px 32px 24px 32px;
+        }
+
+        .heading {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1769aa;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hisaab-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .hisaab-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, #e3f0fb 60%, #e3f0fb00 100%);
+            border-radius: 12px;
+            padding: 18px 24px;
+            transition: box-shadow 0.18s;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.04);
+            animation: fadeInUp 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hisaab-title {
+            font-size: 1.18rem;
+            font-weight: 500;
+            color: #113c5c;
+            letter-spacing: 1px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 18px;
+        }
+
+        .card-actions a, .icon-btn {
+            text-decoration: none;
+            font-size: 1.25rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: color 0.12s;
+            padding: 0 4px;
+        }
+        .card-actions a {
+            color: #1769aa;
+        }
+        .card-actions a:hover {
+            color: #0d3c61;
+        }
+        .icon-btn.delete {
+            color: #f44336;
+        }
+        .icon-btn.delete:hover {
+            color: #b71c1c;
+        }
+        .icon-btn.edit {
+            color: #ffa726;
+        }
+        .icon-btn.edit:hover {
+            color: #fb8c00;
+        }
+
+        .no-hisaab {
+            text-align: center;
+            font-size: 1.18rem;
+            color: #757575;
+            padding: 50px 0 30px 0;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            .container {
+                padding: 18px 7px 12px 7px;
+            }
+            .hisaab-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 12px 10px;
+            }
+        }
+    </style>
 </head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-    }
-
-    nav {
-        background-color: #333;
-        padding: 10px;
-        display: flex;
-        justify-content: space-evenly;
-
-
-    }
-
-    nav .left {
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    nav .right {
-        color: white;
-        font-size: 18px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-
-    }
-
-    nav .right a {
-        
-        margin: 0 15px;
-        cursor: pointer;
-    }
-
-    .date-button {
-        background-color: #1e88e5;
-        /* Blue */
-        color: white;
-        padding: 10px 20px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        width: 300px;
-        justify-content: space-evenly;
-        margin: 10px;
-    }
-
-    .date-text {
-        font-size: 18px;
-    }
-
-    .icon-btn {
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        font-size: 18px;
-    }
-
-    .icon-btn.delete {
-        color: #ff5252;
-        /* red trash icon */
-    }
-
-    .icon-btn:hover {
-        opacity: 0.8;
-    }
-
-    .main {
-        padding: 20px;
-        background-color: white;
-        margin: 20px auto;
-        width: 80%;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        height: 400px;
-        line-height: 90px;
-    }
-    a {
-        color: rgb(255, 255, 255);
-        text-decoration: none;
-    }
-    a:hover {
-        color: #592626;
-    }
-</style>
 
 <body>
     <nav>
-        <div class="left">Khaatabook</div>
-        <div class="right">
-            <a href="/">Home</a>
+        <div class="nav-logo">Khaatabook</div>
+        <div class="nav-links">
+            <a href="/" class="active">Home</a>
             <a href="/create">Create new hisaab</a>
         </div>
-
-
     </nav>
-    <div class="main">
-        <h3>All Hisaab</h3>
-        <% if(files.length> 0 ){ %>
-            <% files.forEach(function(file){ %>
-                <div class="date-button">
-                    <span class="date-text">
-                        <%= file.split(".")[0] %>
-                    </span>
-                    <button class="icon-btn" onclick="navigateDate()">➡️</button>
-                    <button class="icon-btn" onclick="editDate()">✏️</button>
-                    <button class="icon-btn delete" onclick="deleteDate()">🗑️</button>
-                </div>
+    <div class="container">
+        <div class="heading">📚 All Hisaab</div>
+        <div class="hisaab-list">
+            <% if(files.length > 0){ %>
+                <% files.forEach(function(file){ %>
+                    <div class="hisaab-card">
+                        <span class="hisaab-title"><%= file.split(".")[0] %></span>
+                        <div class="card-actions">
+                            <a href="/hisaab/<%= file %>" title="View">&#10148;</a>
+                            <a href="/edit/<%= file %>" class="icon-btn edit" title="Edit">&#9998;</a>
+                            <a href="/delete/<%= file %>" class="icon-btn delete" title="Delete">&#128465;</a>
+                        </div>
+                    </div>
                 <% }) %>
-                    <% } else { %>
-                        <p>No Hisaab found</p>
-                        <% } %>
-
-
+            <% } else { %>
+                <div class="no-hisaab">No Hisaab found 😕</div>
+            <% } %>
+        </div>
     </div>
-
-    
 </body>
 
 </html>

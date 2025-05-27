@@ -2,114 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Edit Hisaab</title>
+  <title>Edit Hisaab - Khaatabook</title>
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
   <style>
-    nav {
-        background-color: #333;
-        padding: 10px ;
-        display: flex;
-        justify-content: space-evenly;
-        
-        
-    }
-    nav .left {
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-    }
-    nav .right {
-        color: white;
-        font-size: 18px;
-        display: flex;
-        flex-direction: row;
-        
-    }
-    nav .right li {
-        list-style: none;
-        margin: 0 15px;
-        cursor: pointer;
-    }
     body {
-      font-family: sans-serif;
-      background: #f9f9f9;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(120deg, #dfe9f3 0%, #ffffff 100%);
+      color: #222;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 12px 0 rgba(44, 62, 80, 0.07);
+      padding: 0 40px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-direction: column;
-      height: 100vh;
+      justify-content: space-between;
+      height: 68px;
     }
-
+    .nav-logo {
+      color: #1769aa;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #1769aa;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 5px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: #e3f0fb;
+      color: #0d3c61;
+    }
     .edit-container {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 600px;
+      background: #fff;
+      padding: 36px 32px 28px 32px;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(52, 103, 168, 0.08);
+      max-width: 600px;
+      margin: 48px auto 0 auto;
     }
-
-    .edit-container p {
-      font-size: 18px;
-      margin-bottom: 15px;
+    .edit-heading {
+      font-size: 1.7rem;
+      color: #1769aa;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
     }
-
-    .edit-container p .date {
+    .edit-date {
       color: #1e88e5;
+      font-size: 1.15rem;
+      margin-left: 8px;
+      font-weight: 500;
       text-decoration: none;
     }
-
     textarea {
       width: 100%;
-      height: 200px;
-      padding: 12px;
+      height: 210px;
+      padding: 14px;
       border: none;
-      border-radius: 8px;
-      background: #eaeaea;
-      font-size: 16px;
+      border-radius: 10px;
+      background: #f4f8fd;
+      font-size: 1.1rem;
       resize: vertical;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
+      color: #22314a;
+      font-family: 'Inter', Arial, sans-serif;
+      box-sizing: border-box;
+      transition: background 0.12s;
     }
-
-    button {
+    textarea:focus {
+      outline: 2px solid #1e88e5;
+      background: #e3f0fb;
+    }
+    .edit-btn {
       background-color: #1e88e5;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 38px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 1.13rem;
+      font-weight: 600;
+      transition: background 0.18s, color 0.18s;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      margin-top: 8px;
+      letter-spacing: 1px;
     }
-
-    button:hover {
-      background-color: #1565c0;
+    .edit-btn:hover {
+      background: #14508a;
+      color: #e3f0fb;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+      }
+      .edit-container {
+        padding: 18px 7px 12px 7px;
+      }
+      .edit-heading {
+        font-size: 1.18rem;
+      }
     }
   </style>
 </head>
 <body>
-    <nav>
-    <div class="left">Khaatabook</div>
-    <div class="right">
-        <li>Home</li>
-        <li>Create new Hisaab</li>
+  <nav>
+    <div class="nav-logo">Khaatabook</div>
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="/create">Create new hisaab</a>
     </div>
-    
-   </nav>
-
-<div class="edit-container">
-  <p>you're editing hisaab of <a href="#" class="date">12-08-2024</a> date</p>
-  <textarea id="editDetails" placeholder="write your hisaab."></textarea>
-  <button onclick="updateHisaab()">Update Hisaab</button>
-</div>
-
-<script>
-  function updateHisaab() {
-    const updatedText = document.getElementById("editDetails").value;
-    if (!updatedText.trim()) {
-      alert("Please write your hisaab before updating.");
-      return;
-    }
-    alert("Hisaab updated:\n\n" + updatedText);
-  }
-</script>
-
+  </nav>
+  <div class="edit-container">
+    <div class="edit-heading">
+      Edit Hisaab of 
+      <span class="edit-date"><%= filename.split(".")[0] %></span>
+    </div>
+    <form action="/update/<%= filename %>" method="POST">
+      <textarea name="content" id="editDetails" placeholder="Write your hisaab here..."><%= filedata %></textarea>
+      <button class="edit-btn" type="submit">Update Hisaab</button>
+    </form>
+  </div>
 </body>
 </html>

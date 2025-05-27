@@ -3,84 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View Hisaab - Khaatabook</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(120deg, #dfe9f3 0%, #ffffff 100%);
+            color: #222;
+            min-height: 100vh;
+        }
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 12px 0 rgba(44, 62, 80, 0.07);
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .nav-logo {
+            color: #1769aa;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            color: #1769aa;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 5px;
+            transition: background 0.15s, color 0.15s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background: #e3f0fb;
+            color: #0d3c61;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px rgba(52, 103, 168, 0.08);
+            padding: 36px 32px 28px 32px;
+        }
+        .heading {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1769aa;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .hisaab-date {
+            color: #1e88e5;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        .hisaab-content {
+            background: #f4f8fd;
+            border-radius: 12px;
+            color: #22314a;
+            font-size: 1.17rem;
+            padding: 20px 18px;
+            margin: 25px 0;
+            white-space: pre-line;
+            min-height: 120px;
+            letter-spacing: 0.2px;
+        }
+        .edit-link {
+            display: inline-block;
+            background: #1e88e5;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 11px 32px;
+            font-size: 1.13rem;
+            transition: background 0.18s, color 0.18s;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
+            margin-top: 18px;
+        }
+        .edit-link:hover {
+            background: #14508a;
+            color: #e3f0fb;
+        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            .container {
+                padding: 18px 7px 12px 7px;
+            }
+            .heading {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
 </head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-    }
-    nav {
-        background-color: #333;
-        padding: 10px ;
-        display: flex;
-        justify-content: space-evenly;
-        
-        
-    }
-    nav .left {
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-    }
-    nav .right {
-        color: white;
-        font-size: 18px;
-        display: flex;
-        flex-direction: row;
-        
-    }
-    nav .right li {
-        list-style: none;
-        margin: 0 15px;
-        cursor: pointer;
-    }
-    .main {
-        padding: 20px;
-        background-color: white;
-        margin: 20px auto;
-        width: 80%;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        height: 400px;
-        line-height: 90px;
-    }
-    .main span {
-        color: blue;
-    }
-    .button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-</style>
-
 <body>
-    
    <nav>
-    <div class="left">Khaatabook</div>
-    <div class="right">
-        <li>Home</li>
-        <li>Create new Hisaab</li>
-    </div>
-    
+        <div class="nav-logo">Khaatabook</div>
+        <div class="nav-links">
+            <a href="/" class="active">Home</a>
+            <a href="/create">Create new hisaab</a>
+        </div>
    </nav>
-   <div class="main">
-   <h3>Hisaab of <span> 12-08-2024</span> date</h3>
-   <p>aata, daal cheeni</p>
-   <button class="button">Edit this hisaab</button>
+   <div class="container">
+       <div class="heading">
+         Hisaab of 
+         <span class="hisaab-date"><%= filename.split(".")[0] %></span>
+       </div>
+       <div class="hisaab-content">
+           <%= filedata %>
+       </div>
+       <a class="edit-link" href="/edit/<%= filename %>">Edit this hisaab</a>
    </div>
-
-
 </body>
 </html>
